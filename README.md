@@ -112,5 +112,3 @@ This project demonstrates **end-to-end analytics workflow** – from raw sales d
 It highlights expertise in **SQL, Power BI, and real-world problem solving**, making it highly relevant for **Data Analyst & BI roles**.
 
 ---
-
-👉 Would you like me to also create a **folder structure suggestion (SQL scripts + Power BI + README)** so recruiters see it as a well-organized portfolio project?
