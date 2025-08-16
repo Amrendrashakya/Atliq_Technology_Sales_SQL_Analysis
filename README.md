@@ -1,63 +1,116 @@
-Atliq Technology Sales - Ad-Hoc Insights
+# 📊 Atliq Technology Sales - Ad-Hoc Insights
 
-## Project Overview
-In this project we're looking at the Atliq Technology Sales Ad-Hoc Insights that are discussed by the stakeholders. There requirements are as follow:-
+## 📌 Project Overview
 
+This project analyzes **Atliq Technologies' sales data** through ad-hoc insights requested by stakeholders.
+The objective is to provide actionable insights into customer behavior, product performance, market reach, and growth trends using **SQL** for data extraction and **Power BI** for visualization.
 
-## Database Schema
+---
 
-The project uses five main tables:
+## 🗄️ Database Schema
 
-1. **dim_customer**: contains customer-related data
-   - `customer_code`: The 'customer_code' column features unique identification codes for every customer in the dataset. These codes can be used to track a customer's sales
-                      history, demographic information, and other relevant details. For example, the codes could look like '70002017', '90005160', and '80007195' respectively.
-   - `customer`: The 'customer' column lists the names of customers, for example 'Atliq Exclusive', 'Flipkart', and 'Surface Stores' etc.
-   - `platform`: The 'platform' column identifies the means by which a company's products or services are sold. "Brick & Mortar" represents the physical store/location, and
-                "E-Commerce" represents online platforms.
-   - `channel`: The 'channel' column reflects the distribution methods used to sell a product. These methods include "Retailers", "Direct", and "Distributors".
-   - `market`: The 'market' column lists the countries in which the customer is located.
-   - `region`: The 'region' column categorizes countries according to their geographic location.
-   - `sub_zone`: "The 'sub_zone' column further breaks down the regions into sub-regions
+The project leverages **six key tables**:
 
-2. **dim_product**: contains product-related data
-    - `product_code`: The 'product_code' column features unique identification codes for each product, serving as a means to track and distinguish individual products within a	database or system.    
-    - `division`: The 'division' column categorizes products into groups such as "P & A" (Peripherals and Accessories), "N & S" (Network and Storage) and "PC" (Personal Computer).    
-    - `segment`: The 'segment' column categorizes products further within the division, such as "Peripherals" (keyboard, mouse, monitor, etc.), "Accessories" (cases, cooling solutions, power supplies),
-              "Notebook" (laptops), "Desktop" (desktops, all-in-one PCs, etc), "Storage" (hard disks, SSDs, external storage), and "Networking" (routers, switches, modems, etc.).
-    - `category`: The 'category' column classifies products into specific subcategories within the segment.    
-    - `product`: The 'product' column lists the names of individual products, corresponding to the unique identification codes found in the 'product_code' column.    
-    - `variant`: The "variant" column classifies products according to their features, prices, and other characteristics.
-      
-3. **fact_gross_price**: contains gross price information for each product
-  - `product_code`: The 'product_code' column features unique identification codes for each product.  
-  - `fiscal_year`: The 'fiscal_year' column contains the fiscal period in which the product sale was recorded.
-                  Data available in this column covers the fiscal years 2020 and 2021.  
-  - `gross_price`: The 'gross_price' column holds the initial price of a product, prior to any reductions or taxes. It is the original selling price of the product.
+### 1. `dim_customer` – Customer Information
 
+* **customer\_code** – Unique identifier for each customer
+* **customer** – Customer name (e.g., Flipkart, Atliq Exclusive)
+* **platform** – "Brick & Mortar" or "E-Commerce"
+* **channel** – Sales channel ("Retailers", "Direct", "Distributors")
+* **market** – Customer country
+* **region** – Geographical region
+* **sub\_zone** – Sub-regional classification
 
-4. **fact_manufacturing_cost**: contains the cost incurred in the production of each product
-  - `product_code`: The 'product_code' column features unique identification codes for each product  
-  - `cost_year`: The "cost_year" column contains the fiscal year in which the product was manufactured.  
-  - `manufacturing_cost`: The "manufacturing_cost" column contains the total cost incurred for the production of a product. This cost includes direct costs like
-                        raw materials, labor, and overhead expenses that are directly associated with the production process.
+### 2. `dim_product` – Product Information
 
-5. **fact_pre_invoice_deductions**: contains pre-invoice deductions information for each product
-  - `customer_code`: The 'customer_code' column features unique identification codes for every customer in the dataset.  
-  - `fiscal_year`: The "fiscal_year" column holds the fiscal period when the sale of a product occurred.  
-  - `pre_invoice_discount_pct`: The "pre_invoice_discount_pct" column contains the percentage of pre-invoice deductions for each product. Pre-invoice deductions are 
-                              discounts that are applied to the gross price of a product before the invoice is generated, and typically applied to large orders or 	long-term contracts.
-  
-6. **fact_sales_monthly**: contains monthly sales data for each product.
-  - `date`: The "date" column contains the date when the sale of a product was made, in a monthly format for 2020 and 2021 fiscal years.  
-  - `product_code`: The "product_code" column contains a unique identification code for each product.   
-  - `customer_code`: The 'customer_code' column features unique identification codes for every customer in the dataset.  
-  - `sold_quantity`: The "sold_quantity" column contains the number of units of a product that were sold.  
-  - `fiscal_year`: The "fiscal_year" column holds the fiscal period when the sale of a product occurred.
+* **product_code** – Unique product identifier
+* **division** – Product groups ("P & A", "N & S", "PC")
+* **segment** – Product type (Notebook, Desktop, Peripherals, Accessories, Storage, Networking)
+* **category** – Subcategories within each segment
+* **product** – Product name
+* **variant** – Product variations (features, prices, characteristics)
 
+### 3. `fact_gross_price` – Product Pricing
 
-This project primarily focuses on developing and showcasing the following SQL skills:
+* **product_code** – Product identifier
+* **fiscal_year** – Year (2020, 2021)
+* **gross_price** – Base selling price before discounts/taxes
 
-- **Complex Joins and Aggregations**: Demonstrating the ability to perform complex SQL joins and aggregate data meaningfully.
-- **Window Functions**: Using advanced window functions for running totals, growth analysis, and time-based queries.
-- **Data Segmentation**: Analyzing data across different time frames to gain insights into product performance.
-- **Real-World Problem Solving**: Answering business-related questions that reflect real-world scenarios faced by data analysts.
+### 4. `fact_manufacturing_cost` – Production Costs
+
+* **product_code** – Product identifier
+* **cost_year** – Year of manufacturing
+* **manufacturing_cost** – Total production cost (materials, labor, overheads)
+
+### 5. `fact_pre_invoice_deductions` – Discounts & Deductions
+
+* **customer_code** – Customer identifier
+* **fiscal_year** – Year
+* **pre_invoice_discount_pct** – % discount applied before invoicing
+
+### 6. `fact_sales_monthly` – Monthly Sales Data
+
+* **date** – Month of sales
+* **product_code** – Product identifier
+* **customer_code** – Customer identifier
+* **sold_quantity** – Units sold
+* **fiscal_year** – Year of sales
+
+---
+
+## 🛠️ Skills Used
+
+* **SQL**
+
+  * Complex Joins & Aggregations
+  * Window Functions (Running totals, YOY growth, Ranking)
+  * Data Segmentation (Time-based performance analysis)
+* **Power BI**
+
+  * Data Modeling & Relationships
+  * DAX Measures & Calculations
+  * Interactive Dashboards for stakeholders
+* **Business Analysis**
+
+  * Translating business questions into data insights
+  * Identifying trends, growth drivers, and cost strategies
+
+---
+
+## 📈 Key Insights
+
+* 🌍 **Market Reach**: AtliQ Exclusive operates across **8 APAC markets**
+* 📦 **Product Expansion**: Unique products grew by **36.3% in 2021 vs 2020**
+* 💻 **Top Segment**: **Notebook** segment led in both product diversity & sales
+* 🎯 **Growth Driver**: **Accessories** showed the highest product growth
+* 💰 **Cost Strategy**: Identified **high vs low-cost products** for pricing optimization
+* 🛒 **Retail Influence**: **Flipkart & Croma** applied the highest discount rates
+* 📅 **Seasonality**: Sales **peaked from October to December** each year
+* 🔝 **Top Channel**: **Retailers contributed 73%+** of gross sales in 2021
+* 🏆 **Division Leaders**: **AQ Pen Drive DRC** and **AQ Gamers Ms** were top performers
+
+---
+
+## 📊 Dashboard Preview
+
+*(Add a screenshot of your Power BI dashboard here for better impact)*
+
+---
+
+## 🚀 How to Use
+
+1. Clone the repository
+2. Import SQL scripts to your database
+3. Open the Power BI file (`.pbix`) for interactive insights
+4. Explore dashboards and modify queries for custom analysis
+
+---
+
+## 📌 Conclusion
+
+This project demonstrates **end-to-end analytics workflow** – from raw sales data to meaningful business insights.
+It highlights expertise in **SQL, Power BI, and real-world problem solving**, making it highly relevant for **Data Analyst & BI roles**.
+
+---
+
+👉 Would you like me to also create a **folder structure suggestion (SQL scripts + Power BI + README)** so recruiters see it as a well-organized portfolio project?
